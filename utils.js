@@ -1151,5 +1151,5 @@ utils = {
 
         pm.expect.fail(message);
     }
-// End of 'utils' functions..
+// End of 'utils' functions.
 };
