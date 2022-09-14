@@ -88,11 +88,11 @@ utils.run.always(pm, "Client_Credentials_Flow_Tests", function() {
 ## Primary test functions
 Use primary test functions to initialize and execute tests. Primary test functions are grouped under the `utils.test` namespace and include:
 * [utils.test.initialize](#utilstestinitialize):
-Use to initialize request data in the pre-request script.
+Use to initialize request data in pre-request scripts.
 * [utils.test.positive](#utilstestpositive):
-Use to execute a positive test.
+Use to execute positive tests.
 * [utils.test.negative](#utilstestnegative):
-Use to execute a negative test.
+Use to execute negative tests.
 * [utils.test.neutral](#utilstestneutral):
 Use if you need to execute additional tests that must run separately from the primary (positive or negative) test defined for a request.
 
@@ -109,7 +109,7 @@ Inline function containing the code to be executed (this function is optional fo
 The optional error handler that can be handy if you need to implement special logic (like stopping test execution or skipping to a specific test) on operation failure in the default or custom `process` function.
 
 ### `utils.test.initialize`
-Use this function to initialize request data in the pre-request script.
+Use to initialize request data in pre-request scripts.
 
 #### Prototype
 ```JavaScript
@@ -126,7 +126,7 @@ utils.test.initialize(pm, null, function() {
 ```
 
 ### `utils.test.positive`
-Use this function to run a negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
+Use to run negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
 
 #### Prototype
 ```JavaScript
@@ -165,7 +165,7 @@ utils.test.positive(pm, null, 200, function() {
 ```
 
 ### `utils.test.negative`
-Use this function to run negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will also check the value of the `serviceCode` (or similar) property defined in the data object returned in HTTP response. You can also add additional checks in the custom code defined in the `process` parameter.
+Use to run negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will also check the value of the `serviceCode` (or similar) property defined in the data object returned in HTTP response. You can also add additional checks in the custom code defined in the `process` parameter.
 
 #### Prototype
 ```JavaScript
