@@ -150,14 +150,14 @@ utils.test.positive(pm, null, 204);
 
 A positive test that checks for the `200 OK` HTTP status code passed in the HTTP response and implements additional check.
 ```JavaScript
-utils.test.positive(pm, null, 204, function() {
+utils.test.positive(pm, null, 200, function() {
     console.log("Add custom validation checks here.");
 });
 ```
 
 A positive test that checks for the `200 OK` HTTP status code passed in the HTTP response and implements additional check and error handling.
 ```JavaScript
-utils.test.positive(pm, null, 204, function() {
+utils.test.positive(pm, null, 200, function() {
     console.log("Add custom validation checks here.");
 }, function() {
     console.log("This code will be executed if an error occurs in code above or default test logic.");
