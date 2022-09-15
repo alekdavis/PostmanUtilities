@@ -113,7 +113,7 @@ Use to initialize request data in pre-request scripts.
 
 #### Prototype
 ```JavaScript
-initialize(pm, name, process, onerror)
+utils.test.initialize(pm, name, process, onerror)
 ```
 
 #### Example
@@ -130,7 +130,7 @@ Use to run negative tests. By default, it will check the response's HTTP status 
 
 #### Prototype
 ```JavaScript
-positive(pm, name, status, process, onerror)
+utils.test.positive(pm, name, status, process, onerror)
 ```
 
 #### Parameters
@@ -169,7 +169,7 @@ Use to run negative tests. By default, it will check the response's HTTP status 
 
 #### Prototype
 ```JavaScript
-negative(pm, name, status, serviceCode, process, onerror)
+utils.test.negative(pm, name, status, serviceCode, process, onerror)
 ```
 
 #### Parameters
@@ -222,7 +222,7 @@ This function is intended for a rare case when you need to implement multiple te
 
 #### Prototype
 ```JavaScript
-neutral(pm, name, process, onerror)
+utils.test.neutral(pm, name, process, onerror)
 ```
 
 #### Example
@@ -273,7 +273,7 @@ Expects HTTP response to return a simple (not the JSON) data type, such as strin
 
 #### Prototype
 ```JavaScript
-text(pm)
+utils.expect.response.text(pm)
 ```
 
 #### Example
@@ -287,7 +287,7 @@ Expects HTTP response to return any JSON object. It can be a single element, a c
 
 #### Prototype
 ```JavaScript
-json(pm)
+utils.expect.response.json(pm)
 ```
 
 #### Example
@@ -301,7 +301,7 @@ Expects HTTP response to return a single JSON element (not a collection and not 
 
 #### Prototype
 ```JavaScript
-one(pm)
+utils.expect.response.one(pm)
 ```
 
 #### Example
@@ -319,7 +319,7 @@ Expects HTTP response to return a JSON collection (can be empty or contain the s
 
 #### Prototype
 ```JavaScript
-many(pm, min = 0, max = -1)
+utils.expect.response.many(pm, min = 0, max = -1)
 ```
 
 #### Parameters
@@ -339,7 +339,7 @@ Expects HTTP response to return an empty JSON collection (but not `null`).
 
 #### Prototype
 ```JavaScript
-empty(pm)
+utils.expect.response.empty(pm)
 ```
 
 #### Example
@@ -353,7 +353,7 @@ Expects HTTP response to return a non-empty JSON collection (one or more items).
 
 #### Prototype
 ```JavaScript
-nonempty(pm)
+utils.expect.response.nonempty(pm)
 ```
 
 #### Example
@@ -367,7 +367,7 @@ Expects HTTP response to return a JSON collection with a single element (but not
 
 #### Prototype
 ```JavaScript
-unique(pm)
+utils.expect.response.unique(pm)
 ```
 
 #### Example
@@ -402,7 +402,7 @@ Expects the specified object to have a property with the given name.
 
 #### Prototype
 ```JavaScript
-exist(pm, data, name)
+utils.expect.property.exist(pm, data, name)
 ```
 
 #### Example
@@ -418,7 +418,7 @@ Expects the specified object to not have a property with the given name.
 
 #### Prototype
 ```JavaScript
-notexist(pm, data, name)
+utils.expect.property.notexist(pm, data, name)
 ```
 
 #### Example
@@ -434,7 +434,7 @@ Expects a named property of the specified object to be equal to the specific val
 
 #### Prototype
 ```JavaScript
-equal(pm, data, name, value)
+utils.expect.property.equal(pm, data, name, value)
 ```
 
 #### Parameters
@@ -491,7 +491,7 @@ Expects the named object property to be equal to the specified string value.
 
 #### Prototype
 ```JavaScript
-exact(pm, data, name, value, ignoreCase)
+utils.expect.property.string.exact(pm, data, name, value, ignoreCase)
 ```
 #### Parameters
 * `ignoreCase`:
@@ -510,7 +510,7 @@ Expects the named object property to be contain the specified string value.
 
 #### Prototype
 ```JavaScript
-partial(pm, data, name, value, ignoreCase)
+utils.expect.property.string.partial(pm, data, name, value, ignoreCase)
 ```
 #### Parameters
 * `ignoreCase`:
@@ -529,7 +529,7 @@ Expects the named object property to start with the specified string value.
 
 #### Prototype
 ```JavaScript
-start(pm, data, name, value, ignoreCase)
+utils.expect.property.string.start(pm, data, name, value, ignoreCase)
 ```
 #### Parameters
 * `ignoreCase`:
@@ -548,7 +548,7 @@ Expects the named object property to end with the specified string value.
 
 #### Prototype
 ```JavaScript
-end(pm, data, name, value, ignoreCase)
+utils.expect.property.string.end(pm, data, name, value, ignoreCase)
 ```
 #### Parameters
 * `ignoreCase`:
@@ -567,7 +567,7 @@ Expects the named object property to match the specified regular expression.
 
 #### Prototype
 ```JavaScript
-match(pm, data, name, value)
+utils.expect.property.string.match(pm, data, name, value)
 ```
 
 #### Example
@@ -625,7 +625,7 @@ utils.run.once(pm, "Client_Credentials_Flow_Tests", function() {
 ### Trace logging
 Both, the [folder level](#folder-level-functions) and the [primary test functions](#primary-test-functions) already call the trace function to log the start and/or end of the operation, but if you want to add your own trace messages, you can do it via following function:
 
-* `utils.trace.log(pm, message, level)
+* `utils.trace.log(pm, message, level)`
 
 The `utils.trace.log` function takes the trace message and the log level values. It will compare the log level to the level initialized via one of the `utils.trace.set` functions (or the default) and if the specified level is the same or lower than the trace message will be logged; otherwise, it will be suppressed.
 
@@ -651,7 +651,7 @@ Builds the name of the test to be used in primary test functions or elsewhere. T
 
 #### Prototype
 ```JavaScript
-name(pm, name, suffix)
+utils.name(pm, name, suffix)
 ```
 #### Parameters
 * `name`:
@@ -673,7 +673,7 @@ Pauses script execution for the specified number of seconds or milliseconds.
 
 #### Prototype
 ```JavaScript
-wait(pm, timeout, seconds = true)
+utils.wait(pm, timeout, seconds = true)
 ```
 
 #### Parameters
@@ -694,7 +694,7 @@ Stops test execution.
 
 #### Prototype
 ```JavaScript
-stop(pm, timeout, seconds = true)
+utils.stop(pm, timeout, seconds = true)
 ```
 
 #### Example
@@ -708,7 +708,7 @@ Skips test execution to the specified test.
 
 #### Prototype
 ```JavaScript
-skip(pm, name)
+utils.skip(pm, name)
 ```
 
 #### Parameters
