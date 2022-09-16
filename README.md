@@ -23,7 +23,7 @@ For the sake of consistency, all `utils` functions expect the global `pm` object
 ### Functions
 The `utils` functions are logically grouped in nested classes (namespaces) and include:
 
-* [Folder level functions](#folder-level-functions) for test initialization
+* [Folder level functions](#folder-level-functions) for setting up tests
 * [Primary test functions](#primary-test-functions) for testing request results
 * [Data validation functions](#data-validation-functions) for checking data returned from requests
 * [Trace functions](#trace-functions) for trace logging
