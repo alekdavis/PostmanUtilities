@@ -267,7 +267,7 @@ Expects HTTP response to return a non-empty JSON collection.
 * [`utils.expect.response.unique`](#utilsexpectresponseunique):
 Expects HTTP response to return a JSON collection with a single element.
 
-### utils.expect.response.text
+### `utils.expect.response.text`
 Expects HTTP response to return a simple (not the JSON) data type, such as string.
 
 #### Prototype
@@ -281,7 +281,7 @@ Check if the HTTP response data can be initialized as text.
 utils.expect.response.text(pm);
 ```
 
-### utils.expect.response.json
+### `utils.expect.response.json`
 Expects HTTP response to return any JSON object. It can be a single element, a collection, an empty collection, basically, anything that comes in a JSON format.
 
 #### Prototype
@@ -295,7 +295,7 @@ Check if the HTTP response data contains a JSON object.
 utils.expect.response.json(pm);
 ```
 
-### utils.expect.response.one
+### `utils.expect.response.one`
 Expects HTTP response to return a single JSON element (not a collection and not a collection with a single item).
 
 #### Prototype
@@ -309,7 +309,7 @@ Check if the HTTP response data contains a single JSON element.
 utils.expect.response.one(pm);
 ```
 
-### utils.expect.response.many
+### `utils.expect.response.many`
 Expects HTTP response to return a JSON collection (can be empty or contain the specified minimum and/or maximum number of items). The `utils.expect.response.many` function can be called via one of these shortcuts:
 
 * [`utils.expect.response.empty`](#utilsexpectresponseempty) to check for an empty collection
@@ -333,7 +333,7 @@ Check if the HTTP response data contains a JSON collection with at least 2 and a
 utils.expect.response.many(pm, 2, 10);
 ```
 
-### utils.expect.response.empty
+### `utils.expect.response.empty`
 Expects HTTP response to return an empty JSON collection (but not `null`).
 
 #### Prototype
@@ -347,7 +347,7 @@ Check if the HTTP response data contains an empty JSON collection (but not `null
 utils.expect.response.empty(pm);
 ```
 
-### utils.expect.response.nonempty
+### `utils.expect.response.nonempty`
 Expects HTTP response to return a non-empty JSON collection (one or more items).
 
 #### Prototype
@@ -361,7 +361,7 @@ Check if the HTTP response data contains a JSON collection with at least one ite
 utils.expect.response.nonempty(pm);
 ```
 
-### utils.expect.response.unique
+### `utils.expect.response.unique`
 Expects HTTP response to return a JSON collection with a single element (but not a single element matching the condition of the utils.expect.response.one function).
 
 #### Prototype
