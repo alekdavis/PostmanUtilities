@@ -245,9 +245,9 @@ utils.test.neutral(pm, utils.name(pm, null, i++), function() {
 ## Data validation functions
 Use data validation functions to check data returned by the HTTP response object. Data validation functions are grouped under the `utils.expect` namespace in three categories:
 
-* [**Response validation functions**](#response-validation-functions)
-* [**Property validation functions**](#property-validation-functions)
-* [**String validation functions**](#string-validation-functions)
+* [**Response validation functions**](#response-validation-functions) for checking HTTP response data
+* [**Property validation functions**](#property-validation-functions) for checking object properties
+* [**String validation functions**](#string-validation-functions) for checking string property values
 
 ## Response validation functions
 Response validation functions check the type of data returned in HTTP response. They are grouped under the `utils.expect.response` namespace and include:
