@@ -32,9 +32,9 @@ The `utils` functions are logically grouped in nested classes (namespaces) and i
 ## Folder level functions
 Use folder level functions to run test or pre-request code attached to test collection folders (not request scripts). Folder level functions are grouped under the `utils.run` namespace and include:
 * [utils.run.once](#utilsrunonce):
-Invokes code in the specified custom inline function once per collection test run.
+Invokes code in the specified custom inline function once per test collection run.
 * [utils.run.always](#utilsrunalways):
-Invokes code in the specified custom inline function for every request during collection test run.
+Invokes code in the specified custom inline function for every request during test collection run.
 
 ### Parameters
 The following parameters are common to all folder level functions:
@@ -49,7 +49,7 @@ Inline function containing the code to be executed once or always.
 Optional function containing code to be executed on error in the `process` function.
 
 ### `utils.run.once`
-Invokes code in the specified custom inline function once per collection test run.
+Invokes code in the specified custom inline function once per test collection run.
 
 #### Prototype
 ```JavaScript
@@ -60,14 +60,14 @@ Initialize settings for the test collection run in the collection folder's pre-r
 
 ```JavaScript
 utils.run.once(pm, "Client_Credentials_Flow_Tests", function() {
-    console.log("This code will be executed once in the begining of the collection test run.");
+    console.log("This code will be executed once in the begining of the test collection run.");
 }, function() {
     console.log("This code will be executed if an error occurs in code above.");
 });
 ```
 
 ### `utils.run.always`
-Invokes code in the specified custom inline function for every request during collection test run.
+Invokes code in the specified custom inline function for every request during test collection run.
 
 #### Prototype
 ```JavaScript
@@ -597,7 +597,7 @@ Trace functions belong to the `utils.trace` namespace and are divided into two g
 * [Trace logging](#trace-logging)
 
 ### Trace initialization
-To set the trace level (which will be stored in an environment variable for the duration of the collection test run), call one of the trace initialization functions from the test collection's pre-request folder (you only need to do this once). Trace initialization functions belong to the `utils.trace.set` namespace and include:
+To set the trace level (which will be stored in an environment variable for the duration of the test collection run), call one of the trace initialization functions from the test collection's pre-request folder (you only need to do this once). Trace initialization functions belong to the `utils.trace.set` namespace and include:
 
 * `utils.trace.set.none(pm)`:
 Sets trace level to `0`.
