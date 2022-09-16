@@ -101,7 +101,7 @@
 
 utils = {
     // Version of this library.
-    version: "1.0.0",
+    version: "1.0.1",
 
     // Default name of the problem details object property returning
     // application specific error code.
@@ -911,7 +911,7 @@ utils = {
     // Variable used for setting and checking trace level.
     variableName: "TRACE_LEVEL",
 
-    // Defualt trace level (start and end of functions).
+    // Default trace level (start and end of functions).
     defaultLevel: 2,
 
     // DESCRIPTION
@@ -972,7 +972,7 @@ utils = {
         }
 
         if (traceLevel >= level) {
-            console.info(message);
+            console.log(message);
         }
     }
     // End of 'utils.trace' functions.

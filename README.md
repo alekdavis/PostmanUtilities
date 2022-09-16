@@ -25,16 +25,17 @@ The `utils` functions are logically grouped in nested classes (namespaces) and i
 
 * [**Folder level functions**](#folder-level-functions) for setting up tests
 * [**Primary test functions**](#primary-test-functions) for testing request results
-* [**Data validation function**s](#data-validation-functions) for checking data returned from requests
+* [**Data validation functions**](#data-validation-functions) for checking data returned from requests
 * [**Trace functions**](#trace-functions) for trace logging
 * [**General purpose functions**](#general-purpose-functions) for miscellaneour operations
 
 ## Folder level functions
 Before we get to the overview of the folder level functions, let's summarize how folder scripts work. Folder scripts can be defined for pre-requests and post-requests. For each request in the test collection being executed, Postman first runs pre-request scripts defined in all request parent folders starting from the top level folder. Then Postman runs request's pre-request script, executes the request, and runs all post-request scripts defined in the parent folder just as it did with folder pre-requests. Finally, it runs request tests. And it is worth repeating: this logic gets executed for every request in the test collection. You may not need to run any scripts for any or all folders, which is fine: you simple do not add any code to them; but when you do, you may need to run the code once per test collection execution or for every request in the collection.
 
-Use folder level functions to run test or pre-request code attached to test collection folders (but not request scripts). 
+Use folder level functions to run test or pre-request code attached to test collection folders (but not request scripts).
 
 Folder level functions are grouped under the `utils.run` namespace and include:
+
 * [utils.run.once](#utilsrunonce):
 Invokes code in the specified custom inline function once per test collection run.
 * [utils.run.always](#utilsrunalways):
@@ -45,10 +46,8 @@ The following parameters are common to all folder level functions:
 
 * `name`:
 Unique name of the folder in the test collection. Because Postman API does not provide a way to determine the current folder, pass a unique name of the folder when calling these functions (the name may need to be unique in the collection) via the `name` parameter.
-
 * `process`:
 Inline function containing the code to be executed once or always.
-
 * `onerror`:
 Optional function containing code to be executed on error in the `process` function.
 
@@ -105,10 +104,8 @@ The following parameters are common to all primary test functions:
 
 * `name`:
 All primary test functions require the `name` parameter to hold the unique name of the request (or test). In most cases, instead of hard coding request (or test name), pass the `null` value and the functions will set the name to the global `pm.info.requestName` property holding the name of the request. You should only specify an explicitly defined name if you run multiple tests for a single request, so that you can differentiate between them in the test logs.
-
 * `process`:
 Inline function containing the code to be executed (this function is optional for `utils.test.positive` and `utils.test.negative` functions because they already provide the minimal test functionality that may be sufficient for certain cases).
-
 * `onerror`:
 The optional error handler that can be handy if you need to implement special logic (like stopping test execution or skipping to a specific test) on operation failure in the default or custom `process` function.
 
@@ -179,10 +176,8 @@ utils.test.negative(pm, name, status, serviceCode, process, onerror)
 #### Parameters
 * `status`:
 Expected HTTP status code returned in HTTP response (default value: `400`; it is recommended to explicitly set the expected value).
-
 * `serviceCode`:
 Optional string value of the property holding error code returned by the HTTP response. By default, the name of the property is expected to be `serviceCode`. To check a different property, add the name followed by the colon(`:`) or equal (`=`) character before the expected value, such as `'errorCode=IllegalOperation'`.
-
 
 #### Examples
 A negative test that only checks for the default `400 Bad Request` HTTP status code passed in the HTTP response.
@@ -483,6 +478,7 @@ Expects the named object property to end with the specified string value.
 Expects the named object property to match the specified regular expression.
 
 ### Parameters
+
 * `data`:
 Data object which string property is being checked.
 * `name`:
@@ -605,16 +601,12 @@ To set the trace level (which will be stored in an environment variable for the 
 
 * `utils.trace.set.none(pm)`:
 Sets trace level to `0`.
-
 * `utils.trace.set.minimal(pm)`:
 Sets trace level to `1`.
-
 * `utils.trace.set.default`:
 Same as `utils.trace.set.all(pm)`.
-
 * `utils.trace.set.all(pm)`:
 Sets trace level to `2`.
-
 * `utils.trace.set.custom(pm, level)`:
 Use this to set any custom trace level (parameter `level` is expected to hold a positive integer value).
 
