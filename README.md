@@ -23,14 +23,18 @@ For the sake of consistency, all `utils` functions expect the global `pm` object
 ### Functions
 The `utils` functions are logically grouped in nested classes (namespaces) and include:
 
-* [Folder level functions](#folder-level-functions) for setting up tests
-* [Primary test functions](#primary-test-functions) for testing request results
-* [Data validation functions](#data-validation-functions) for checking data returned from requests
-* [Trace functions](#trace-functions) for trace logging
-* [General purpose functions](#general-purpose-functions) for miscellaneour operations
+* [**Folder level functions**](#folder-level-functions) for setting up tests
+* [**Primary test functions**](#primary-test-functions) for testing request results
+* [**Data validation function**s](#data-validation-functions) for checking data returned from requests
+* [**Trace functions**](#trace-functions) for trace logging
+* [**General purpose functions**](#general-purpose-functions) for miscellaneour operations
 
 ## Folder level functions
-Use folder level functions to run test or pre-request code attached to test collection folders (not request scripts). Folder level functions are grouped under the `utils.run` namespace and include:
+Before we get to the overview of the folder level functions, let's summarize how folder scripts work. Folder scripts can be defined for pre-requests and post-requests. For each request in the test collection being executed, Postman first runs pre-request scripts defined in all request parent folders starting from the top level folder. Then Postman runs request's pre-request script, executes the request, and runs all post-request scripts defined in the parent folder just as it did with folder pre-requests. Finally, it runs request tests. And it is worth repeating: this logic gets executed for every request in the test collection. You may not need to run any scripts for any or all folders, which is fine: you simple do not add any code to them; but when you do, you may need to run the code once per test collection execution or for every request in the collection.
+
+Use folder level functions to run test or pre-request code attached to test collection folders (but not request scripts). 
+
+Folder level functions are grouped under the `utils.run` namespace and include:
 * [utils.run.once](#utilsrunonce):
 Invokes code in the specified custom inline function once per test collection run.
 * [utils.run.always](#utilsrunalways):
