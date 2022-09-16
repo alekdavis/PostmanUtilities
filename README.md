@@ -252,19 +252,19 @@ Use data validation functions to check data returned by the HTTP response object
 ## Response validation functions
 Response validation functions check the type of data returned in HTTP response. They are grouped under the `utils.expect.response` namespace and include:
 
-* `utils.expect.response.text`:
+* [`utils.expect.response.text`](#utilsexpectresponsetext):
 Expects HTTP response to return a simple data type, such as string.
-* `utils.expect.response.json`:
+* [`utils.expect.response.json`](#utilsexpectresponsejson):
 Expects HTTP response to return any JSON object.
-* `utils.expect.response.one`:
+* [`utils.expect.response.one`](#utilsexpectresponseone):
 Expects HTTP response to return a single JSON element.
-* `utils.expect.response.many`:
+* [`utils.expect.response.many`](#utilsexpectresponsemany):
 Expects HTTP response to return a JSON collection.
-* `utils.expect.response.empty`:
+* [`utils.expect.response.empty`](#utilsexpectresponseempty):
 Expects HTTP response to return an empty JSON collection.
-* `utils.expect.response.nonempty`:
+* [`utils.expect.response.nonempty`](#utilsexpectresponsenonempty):
 Expects HTTP response to return a non-empty JSON collection.
-* `utils.expect.response.unique`:
+* [`utils.expect.response.unique`](#utilsexpectresponseunique):
 Expects HTTP response to return a JSON collection with a single element.
 
 ### utils.expect.response.text
@@ -312,9 +312,9 @@ utils.expect.response.one(pm);
 ### utils.expect.response.many
 Expects HTTP response to return a JSON collection (can be empty or contain the specified minimum and/or maximum number of items). The `utils.expect.response.many` function can be called via one of these shortcuts:
 
-* [`utils.expect.response.empty`](#utilsexpectresponseempty)
-* [`utils.expect.response.nonempty`](#utilsexpectresponsenonempty)
-* [`utils.expect.response.unique`](#utilsexpectresponseunique)
+* [`utils.expect.response.empty`](#utilsexpectresponseempty) to check for an empty collection
+* [`utils.expect.response.nonempty`](#utilsexpectresponsenonempty) to check for a non-empty collection
+* [`utils.expect.response.unique`](#utilsexpectresponseunique) to check for a collection with a single (unique) item
 
 #### Prototype
 ```JavaScript
@@ -379,13 +379,13 @@ utils.expect.response.unique(pm);
 ## Property validation functions
 Property validation functions check the named property of the specified object. The primary benefits of these functions (compared to the underlying [Chai assertions](https://www.chaijs.com/api/bdd/) they use) is that that they always check to make sure that the property exist before additional validation (so you can skip one test step) and generate more complete error messages on assertion failures (the default assertion errors do not mention named of the properties being checked, which makes them not that useful). Property validation functions are grouped under the `utils.expect.property` namespace and include:
 
-* `utils.expect.property.exist`:
+* [`utils.expect.property.exist`](#utilsexpectpropertyexist):
 Expects the specified object to have a property with the given name.
-* `utils.expect.property.notexist`:
+* [`utils.expect.property.notexist`](#utilsexpectpropertynotexist):
 Expects the specified object to not have a property with the given name.
-* `utils.expect.property.equal`:
+* [`utils.expect.property.equal`](#utilsexpectpropertyequal):
 Expects a named property of the specified object to be equal to the specific value.
-* `utils.expect.property.notequal`:
+* [`utils.expect.property.notequal`](#utilsexpectpropertynotequal):
 Expects a named property of the specified object to not be equal to the specific value.
 
 ### Parameters
@@ -466,15 +466,15 @@ utils.expect.property.notequal(pm, response, "active", true);
 ## String validation functions
 String validation functions are a subset of property validation functions that focus on string properties. They are grouped under the `utils.expect.property.string` namespace and include:
 
-* `utils.expect.property.string.exact`:
+* [`utils.expect.property.string.exact`](#utilsexpectpropertystringexact):
 Expects the named object property to be equal to the specified string value.
-* `utils.expect.property.string.partial`:
+* [`utils.expect.property.string.partial`](#utilsexpectpropertystringpartial):
 Expects the named object property to be contain the specified string value.
-* `utils.expect.property.string.start`:
+* [`utils.expect.property.string.start`](#utilsexpectpropertystringstart):
 Expects the named object property to start with the specified string value.
-* `utils.expect.property.string.end`:
+* [`utils.expect.property.string.end`](#utilsexpectpropertystringend):
 Expects the named object property to end with the specified string value.
-* `utils.expect.property.string.match`:
+* [`utils.expect.property.string.match`](#utilsexpectpropertystringmatch):
 Expects the named object property to match the specified regular expression.
 
 ### Parameters
