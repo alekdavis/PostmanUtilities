@@ -23,11 +23,11 @@ For the sake of consistency, all `utils` functions expect the global `pm` object
 ### Functions
 The `utils` functions are logically grouped in nested classes (namespaces) and include:
 
-* [Folder level functions](#folder-level-functions)
-* [Primary test functions](#primary-test-functions)
-* [Data validation functions](#data-validation-functions)
-* [Trace functions](#trace-functions)
-* [General purpose functions](#general-purpose-functions)
+* [Folder level functions](#folder-level-functions) for test initialization
+* [Primary test functions](#primary-test-functions) for testing request results
+* [Data validation functions](#data-validation-functions) for checking data returned from requests
+* [Trace functions](#trace-functions) for trace logging
+* [General purpose functions](#general-purpose-functions) for miscellaneour operations
 
 ## Folder level functions
 Use folder level functions to run test or pre-request code attached to test collection folders (not request scripts). Folder level functions are grouped under the `utils.run` namespace and include:
@@ -126,7 +126,7 @@ utils.test.initialize(pm, null, function() {
 ```
 
 ### `utils.test.positive`
-Use to run negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
+Use to run positive tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
 
 #### Prototype
 ```JavaScript
