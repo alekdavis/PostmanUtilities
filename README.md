@@ -250,9 +250,9 @@ utils.test.neutral(pm, utils.name(pm, null, i++), function() {
 ## Data validation functions
 Use data validation functions to check data returned by the HTTP response object. Data validation functions are grouped under the `utils.expect` namespace in three categories:
 
-* [Response validation functions](#response-validation-functions)
-* [Property validation functions](#property-validation-functions)
-* [String validation functions](#string-validation-functions)
+* [**Response validation functions**](#response-validation-functions)
+* [**Property validation functions**](#property-validation-functions)
+* [**String validation functions**](#string-validation-functions)
 
 ## Response validation functions
 Response validation functions check the type of data returned in HTTP response. They are grouped under the `utils.expect.response` namespace and include:
@@ -597,8 +597,8 @@ Trace logs reflect both function start and end calls.
 You can use your own custom trace levels higher than level 2.
 
 Trace functions belong to the `utils.trace` namespace and are divided into two groups
-* [Trace initialization](#trace-initialization)
-* [Trace logging](#trace-logging)
+* [**Trace initialization**](#trace-initialization)
+* [**Trace logging**](#trace-logging)
 
 ### Trace initialization
 To set the trace level (which will be stored in an environment variable for the duration of the test collection run), call one of the trace initialization functions from the test collection's pre-request folder (you only need to do this once). Trace initialization functions belong to the `utils.trace.set` namespace and include:
@@ -727,3 +727,6 @@ utils.skip(pm, "User-Get-Positive-ById");
 
 ## Miscellaneous functions
 The undocumented functions and properties are intended for internal use and unless you want to extend or rewrite the framework, you should not care about them.
+
+## Resources
+* [**Online Chai Assertion Tester**](https://jsfiddle.net/alekdavis/Lsg1uj27/)
