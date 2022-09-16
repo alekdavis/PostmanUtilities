@@ -1,11 +1,11 @@
 # Postman Utilities Library
-This repo holds the [utils](utils.js) JavaScript class that can simplify and reduce [Postman](https://www.postman.com/) test and pre-request code.
+This repo holds the [`utils`](utils.js) JavaScript class that can simplify and reduce [Postman](https://www.postman.com/) test and pre-request code.
 
 ## Overview
 The `utils` library is a simple JavaScript object that, when included in a collection folder's pre-request script, will be available to all scripts called after it. The object exposes various functions intended to make Postman tests shorter, simpler and more consistent.
 
 ## Usage
-To use the `utils` library, copy the [utils.js](utils.js) source code and paste it in the pre-request script of the test collection's root folder. Then you can call the `utils` functions from anywhere in the test code base.
+To use the `utils` library, copy the [`utils.js`](utils.js) source code and paste it in the pre-request script of the test collection's root folder. Then you can call the `utils` functions from anywhere in the test code base.
 
 The `utils` source code comments explain how to use the library, but a more detailed description is provided here.
 
@@ -36,9 +36,9 @@ Use folder level functions to run test or pre-request code attached to test coll
 
 Folder level functions are grouped under the `utils.run` namespace and include:
 
-* [utils.run.once](#utilsrunonce):
+* [`utils.run.once`](#utilsrunonce):
 Invokes code in the specified custom inline function once per test collection run.
-* [utils.run.always](#utilsrunalways):
+* [`utils.run.always`](#utilsrunalways):
 Invokes code in the specified custom inline function for every request during test collection run.
 
 ### Parameters
@@ -90,13 +90,13 @@ utils.run.always(pm, "Client_Credentials_Flow_Tests", function() {
 
 ## Primary test functions
 Use primary test functions to initialize and execute tests. Primary test functions are grouped under the `utils.test` namespace and include:
-* [utils.test.initialize](#utilstestinitialize):
+* [`utils.test.initialize`](#utilstestinitialize):
 Use to initialize request data in pre-request scripts.
-* [utils.test.positive](#utilstestpositive):
+* [`utils.test.positive`](#utilstestpositive):
 Use to execute positive tests.
-* [utils.test.negative](#utilstestnegative):
+* [`utils.test.negative`](#utilstestnegative):
 Use to execute negative tests.
-* [utils.test.neutral](#utilstestneutral):
+* [`utils.test.neutral`](#utilstestneutral):
 Use if you need to execute additional tests that must run separately from the primary (positive or negative) test defined for a request.
 
 ### Parameters
