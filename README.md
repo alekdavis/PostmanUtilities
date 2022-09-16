@@ -428,7 +428,7 @@ var response = pm.response.json();
 utils.expect.property.notexist(pm, response, "id");
 ```
 
-### `utils.expect.property.equal`:
+### `utils.expect.property.equal`
 Expects a named property of the specified object to be equal to the specific value (can be any simple data type, such as boolean, integer, etc.).
 
 #### Prototype
@@ -448,7 +448,7 @@ var response = pm.response.json();
 utils.expect.property.equal(pm, response, "active", true);
 ```
 
-### `utils.expect.property.notequal`:
+### `utils.expect.property.notequal`
 Expects a named property of the specified object to not be equal to the specific value (can be any simple data type, such as boolean, integer, etc.).
 
 #### Parameters
@@ -685,7 +685,7 @@ Pause execution for 5 seconds.
 utils.wait(pm, 5);
 ```
 
-### `utils.stop`:
+### `utils.stop`
 Stops test execution.
 
 #### Prototype
@@ -699,7 +699,7 @@ Stop test run.
 utils.stop(pm);
 ```
 
-### `utils.skip`:
+### `utils.skip`
 Skips test execution to the specified test.
 
 #### Prototype
