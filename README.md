@@ -729,4 +729,5 @@ utils.skip(pm, "User-Get-Positive-ById");
 The undocumented functions and properties are intended for internal use and unless you want to extend or rewrite the framework, you should not care about them.
 
 ## Resources
+* [**Chai Assertion Library**](https://www.chaijs.com/)
 * [**Online Chai Assertion Tester**](https://jsfiddle.net/alekdavis/Lsg1uj27/)
