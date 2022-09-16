@@ -592,9 +592,9 @@ Trace logs reflect both function start and end calls.
 
 You can use your own custom trace levels higher than level 2.
 
-Trace functions belong to the `utils.trace` namespace and are divided into two groups
-* [**Trace initialization**](#trace-initialization)
-* [**Trace logging**](#trace-logging)
+Trace functions belong to the `utils.trace` namespace and are divided into two groups:
+* [**Trace initialization**](#trace-initialization) for setting trace level
+* [**Trace logging**](#trace-logging) for writing trace log messages
 
 ### Trace initialization
 To set the trace level (which will be stored in an environment variable for the duration of the test collection run), call one of the trace initialization functions from the test collection's pre-request folder (you only need to do this once). Trace initialization functions belong to the `utils.trace.set` namespace and include:
