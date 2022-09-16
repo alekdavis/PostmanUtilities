@@ -123,7 +123,7 @@ utils.test.initialize(pm, name, process, onerror)
 #### Example
 ```JavaScript
 utils.test.initialize(pm, null, function() {
-  console.log("Add initialization logic here.");
+    console.log("Add initialization logic here.");
 }, function() {
     console.log("This code will be executed if an error occurs in code above.");
 });
