@@ -12,7 +12,7 @@ The `utils` source code comments explain how to use the library, but a more deta
 Most `utils` functions are logically grouped under the inner classes (namespaces).
 
 ### Conventions
-Parameters which are common in the function group are defined in the group sections. Similar to the `pm` parameter described below, they are not included in the function definition unless the function specific usage differs from the common usage.
+Parameters which are common in the function groups are defined in the group sections. Similar to the `pm` parameter described below, they are not included in the function definition unless the function specific usage differs from the common usage.
 
 ### Parameters
 The following parameters are common to all `utils` functions:
