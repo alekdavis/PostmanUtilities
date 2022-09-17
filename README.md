@@ -36,14 +36,15 @@ For each request in the test collection being executed, Postman first runs pre-r
 
 Let's use the following example:
 ```
-- Collection
+- Collection [pre-request|test]
   |
-  - Folder A
+  - Folder A [pre-request|test]
     |
-    - Folder B
+    - Folder B [pre-request|test]
       |
-      - REQUEST X
-      - REQUEST Y
+      - REQUEST X [pre-request|test]
+      |
+      - REQUEST Y [pre-request|test]
 ```
 
 Assuming that all folders and requests have pre-request and test scripts, the execution will go like this:
