@@ -29,8 +29,8 @@ The `utils` functions are logically grouped in nested classes (namespaces) and i
 * [**Trace functions**](#trace-functions) for trace logging
 * [**General purpose functions**](#general-purpose-functions) for miscellaneous operations
 
-# Request workflow
-Before we get to the function definitions, let's summarize how requests work, so we know what gets executed when. 
+### Request workflow
+Before we get to the function definitions, let's summarize how requests work, so we know what gets executed when (if you already understand how the Postman request worflow works, you can skip to the next section).
 
 For each request in the test collection being executed, Postman first runs pre-request scripts defined in all request parent folders starting from the top level folder. Then Postman runs request's pre-request script, executes the request, and runs all post-request scripts defined in the parent folder just as it did with folder pre-requests. Finally, it runs request tests. And it is worth repeating: this logic gets executed for every request in the test collection. You may not need to run any scripts for any or all folders, which is fine: you simple do not add any code to them; but when you do, you may need to run the code once per test collection execution or for every request in the collection.
 
