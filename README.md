@@ -415,7 +415,7 @@ utils.expect.response.unique(pm);
 ```
 
 ## Property validation functions
-Property validation functions check the named property of the specified object. The primary benefits of these functions (compared to the underlying [Chai assertions](https://www.chaijs.com/api/bdd/) they use) is that that they always check to make sure that the property exist before additional validation (so you can skip one test step) and generate more complete error messages on assertion failures (the default assertion errors do not mention named of the properties being checked, which makes them not that useful). Property validation functions are grouped under the `utils.expect.property` namespace and include:
+Property validation functions check named properties of the specified objects. The primary benefits of these functions (compared to the underlying [Chai assertions](https://www.chaijs.com/api/bdd/) they use) is that they (a) always check to make sure that the properties exist before additional validation (so you can skip one test step) and (b) generate more complete error messages on assertion failures (the default assertion errors do not mention named of the properties being checked, which makes them not that useful). Property validation functions are grouped under the `utils.expect.property` namespace and include:
 
 * [`utils.expect.property.exist`](#utilsexpectpropertyexist):
 Expects the specified object to have a property with the given name.
