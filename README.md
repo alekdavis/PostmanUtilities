@@ -147,7 +147,7 @@ Inline function containing the code to be executed (this function is optional fo
 The optional error handler that can be handy if you need to implement special logic (like stopping test execution or skipping to a specific test) on operation failure in the default or custom `process` function.
 
 ### `utils.test.initialize`
-Use to initialize request data in pre-request scripts.
+Use `utils.test.initialize` to initialize request data in pre-request scripts.
 
 #### Prototype
 ```JavaScript
@@ -165,7 +165,7 @@ utils.test.initialize(pm, null, function() {
 ```
 
 ### `utils.test.positive`
-Use to run positive tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
+Use `utils.test.positive` to run positive tests. By default, it will check the response's HTTP status code against the specified (or default) value. If the returned HTTP status code matches the expected value, this function will call additional custom code if one is specified via the `process` parameter.
 
 #### Prototype
 ```JavaScript
@@ -204,7 +204,7 @@ utils.test.positive(pm, null, 200, function() {
 ```
 
 ### `utils.test.negative`
-Use to run negative tests. By default, it will check the response's HTTP status code against the specified value. If the returned HTTP status code matches the expected value, this function will also check the value of the `serviceCode` (or similar) property defined in the data object returned in HTTP response. You can also add additional checks in the custom code defined in the `process` parameter.
+Use `utils.test.negative` to run negative tests. By default, it will check the response's HTTP status code against the specified (or default) value. If the returned HTTP status code matches the expected value, this function will also check the value of the `serviceCode` (or similar) property defined in the data object returned in HTTP response. You can also add additional checks in the custom code defined in the `process` parameter.
 
 #### Prototype
 ```JavaScript
@@ -215,7 +215,7 @@ utils.test.negative(pm, name, status, serviceCode, process, onerror)
 * `status`:
 Expected HTTP status code returned in HTTP response (default value: `400`; it is recommended to explicitly set the expected value).
 * `serviceCode`:
-Optional string value of the property holding error code returned by the HTTP response. By default, the name of the property is expected to be `serviceCode`. To check a different property, add the name followed by the colon(`:`) or equal (`=`) character before the expected value, such as `'errorCode=IllegalOperation'`.
+Optional string value of the property holding error code returned by the HTTP response. By default, the name of the property is expected to be `serviceCode`. To check a different property, add the name followed by the colon (`:`) or equal (`=`) character before the expected value, such as `'errorCode=IllegalOperation'`.
 
 #### Examples
 A negative test that only checks for the default `400 Bad Request` HTTP status code passed in the HTTP response.
@@ -255,7 +255,7 @@ utils.test.negative(pm, null, 404, null, function() {
 ```
 
 ### `utils.test.neutral`
-This function is intended for a rare case when you need to implement multiple tests for the same request. It is similar to the `utils.test.positive` and `utils.test.negative` functions, except it does not perform any default validation and totally relies on the custom test code specified by the caller in the `process` parameter. Also, because multiple tests are associated with the request, it is recommended to give each of them a unique name (for example, you can append an incremented index to the default test name as illustrated in the example below). Generally, you should avoid using this function.
+The `utils.test.neutral` function is intended for a rare case when you need to implement multiple tests for the same request. It is similar to the `utils.test.positive` and `utils.test.negative` functions, except it does not perform any default validation and totally relies on the custom test code specified by the caller in the `process` parameter. Also, because multiple tests are associated with the request, it is recommended to give each of them a unique name (for example, you can append an incremented index to the default test name as illustrated in the example below). Generally, you should avoid using this function.
 
 #### Prototype
 ```JavaScript
