@@ -29,9 +29,45 @@ The `utils` functions are logically grouped in nested classes (namespaces) and i
 * [**Trace functions**](#trace-functions) for trace logging
 * [**General purpose functions**](#general-purpose-functions) for miscellaneous operations
 
-## Folder level functions
-Before we get to the overview of the folder level functions, let's summarize how folder scripts work. Folder scripts can be defined for pre-requests and post-requests. For each request in the test collection being executed, Postman first runs pre-request scripts defined in all request parent folders starting from the top level folder. Then Postman runs request's pre-request script, executes the request, and runs all post-request scripts defined in the parent folder just as it did with folder pre-requests. Finally, it runs request tests. And it is worth repeating: this logic gets executed for every request in the test collection. You may not need to run any scripts for any or all folders, which is fine: you simple do not add any code to them; but when you do, you may need to run the code once per test collection execution or for every request in the collection.
+# Request workflow
+Before we get to the function definitions, let's summarize how requests work, so we know what gets executed when. 
 
+For each request in the test collection being executed, Postman first runs pre-request scripts defined in all request parent folders starting from the top level folder. Then Postman runs request's pre-request script, executes the request, and runs all post-request scripts defined in the parent folder just as it did with folder pre-requests. Finally, it runs request tests. And it is worth repeating: this logic gets executed for every request in the test collection. You may not need to run any scripts for any or all folders, which is fine: you simple do not add any code to them; but when you do, you may need to run the code once per test collection execution or for every request in the collection.
+
+Let's use the following example:
+```
+- Collection
+  |
+  - Folder A
+    |
+    - Folder B
+      |
+      - REQUEST X
+      - REQUEST Y
+```
+
+Assuming that all folders and requests have pre-request and test scripts, the execution will go like this:
+
+1. Collection pre-request script.
+2. Folder A pre-request script.
+3. Folder B pre-request script.
+4. REQUEST X pre-request script.
+5. REQUEST X
+6. Collection test script.
+7. Folder A test script.
+8. Folder B test script.
+9. REQUEST X test script.
+10. Collection pre-request script.
+12. Folder A pre-request script.
+13. Folder B pre-request script.
+14. REQUEST Y pre-request script.
+15. REQUEST Y
+16. Collection test script.
+17. Folder A test script.
+18. Folder B test script.
+19. REQUEST Y test script.
+
+## Folder level functions
 Use folder level functions to run test or pre-request code attached to test collection folders (but not request scripts).
 
 Folder level functions are grouped under the `utils.run` namespace and include:
