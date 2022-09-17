@@ -587,7 +587,7 @@ There are three default trace levels:
 * `0`:
 Trace logs are turned off.
 * `1`:
-Trace logs reflect only only script start calls.
+Trace logs reflect only script start calls.
 * `2`:
 Trace logs reflect both function start and end calls.
 
