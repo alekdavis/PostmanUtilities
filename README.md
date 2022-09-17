@@ -118,6 +118,7 @@ utils.test.initialize(pm, name, process, onerror)
 ```
 
 #### Example
+Initialize request data in the pre-request script.
 ```JavaScript
 utils.test.initialize(pm, null, function() {
     console.log("Add initialization logic here.");
