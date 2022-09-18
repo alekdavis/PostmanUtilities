@@ -4,6 +4,27 @@ This repo holds the [`utils`](utils.js) JavaScript class that can simplify and r
 ## Overview
 The `utils` library is a simple JavaScript object that, when included in a collection folder's pre-request script, will be available to all scripts called after it. The object exposes various functions intended to make Postman tests shorter, simpler and more consistent.
 
+## Requirements
+The `utils` library is intended for testing REST APIs. There are hardly any prerequisites for using the library, but you would get the most out of it if the REST APIs you are testing were consistent: if they used standrard HTTP status codes to report successful and unsuccessful operations in a predictable and consistent manner. For negative testing and for better reporting of test failures, it would be beneficial if the REST API returned an [RFC 7807-compliant problem details object](https://www.rfc-editor.org/rfc/rfc7807) with a custom string property identifying error code, such as `serviceCode` in this example (the name of the property can be different):
+
+```
+{
+  "type": "https://example.com/probs/bad-input",
+  "title": "Bad Input",
+  "detail": "Invalid email format: 'bademail@com'.",
+  "instance": "/users/12345",
+  "serviceCode": "BadInput"
+}
+```
+## Benefits
+For a single ad-hoc test, the `utils` library will offer little value, but if you are using Postman for automated functional or regression testing, it will:
+
+* allow you to run positive and negative test in a consistent manner
+* eliminate the need to cut and paste standard test boilerplate code (logging the operation, processing errors, etc)
+* provide standard handling and reporting of test failures
+* make it easier to figure out the cause of test failures
+* reduce code needed to validate returned results
+
 ## Usage
 To use the `utils` library, copy the [`utils.js`](utils.js) source code and paste it in the pre-request script of the test collection's root folder. Then you can call the `utils` functions from anywhere in the test code base.
 
