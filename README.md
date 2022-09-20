@@ -25,6 +25,19 @@ For a single ad-hoc test, the `utils` library will offer little value, but if yo
 * make it easier to figure out the cause of test failures
 * reduce code needed to validate returned results
 
+With the `utils` library, implementing a positive test can be done with one line of code, such as:
+
+```JavaScript
+utils.test.positive(pm, null, 200);
+```
+
+And a negative test coul be as simple as:
+
+```JavaScript
+utils.test.negative(pm, null, 400, "BadRequest");
+
+```
+
 ## Usage
 To use the `utils` library, copy the [`utils.js`](utils.js) source code and paste it in the pre-request script of the test collection's root folder. Then you can call the `utils` functions from anywhere in the test code base.
 
