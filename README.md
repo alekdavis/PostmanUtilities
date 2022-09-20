@@ -31,7 +31,7 @@ With the `utils` library, implementing a positive test can be done with one line
 utils.test.positive(pm, null, 200);
 ```
 
-And a negative test coul be as simple as:
+And a negative test could be as simple as:
 
 ```JavaScript
 utils.test.negative(pm, null, 400, "BadRequest");
