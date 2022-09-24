@@ -334,10 +334,10 @@ Expects HTTP response to return a single JSON element.
 Expects HTTP response to return a JSON collection.
 * [`utils.expect.response.empty`](#utilsexpectresponseempty):
 Expects HTTP response to return an empty JSON collection.
-* [`utils.expect.response.nonempty`](#utilsexpectresponsenonempty):
-Expects HTTP response to return a non-empty JSON collection.
 * [`utils.expect.response.unique`](#utilsexpectresponseunique):
 Expects HTTP response to return a JSON collection with a single element.
+* [`utils.expect.response.not.empty`](#utilsexpectresponsenotempty):
+Expects HTTP response to return a non-empty JSON collection.
 
 ### `utils.expect.response.text`
 Expects HTTP response to return a simple (not the JSON) data type, such as string.
@@ -385,7 +385,7 @@ utils.expect.response.one(pm);
 Expects HTTP response to return a JSON collection (can be empty or contain the specified minimum and/or maximum number of items). The `utils.expect.response.many` function can be called via one of these shortcuts:
 
 * [`utils.expect.response.empty`](#utilsexpectresponseempty) to check for an empty collection
-* [`utils.expect.response.nonempty`](#utilsexpectresponsenonempty) to check for a non-empty collection
+* [`utils.expect.response.not.empty`](#utilsexpectresponsenotempty) to check for a non-empty collection
 * [`utils.expect.response.unique`](#utilsexpectresponseunique) to check for a collection with a single (unique) item
 
 #### Prototype
@@ -419,20 +419,6 @@ Check if the HTTP response data contains an empty JSON collection (but not `null
 utils.expect.response.empty(pm);
 ```
 
-### `utils.expect.response.nonempty`
-Expects HTTP response to return a non-empty JSON collection (one or more items).
-
-#### Prototype
-```JavaScript
-utils.expect.response.nonempty(pm)
-```
-
-#### Example
-Check if the HTTP response data contains a JSON collection with at least one item.
-```JavaScript
-utils.expect.response.nonempty(pm);
-```
-
 ### `utils.expect.response.unique`
 Expects HTTP response to return a JSON collection with a single element (but not a single element matching the condition of the utils.expect.response.one function).
 
@@ -448,16 +434,30 @@ Check if the  HTTP response contains a JSON collection with a single element.
 utils.expect.response.unique(pm);
 ```
 
+### `utils.expect.response.not.empty`
+Expects HTTP response to return a non-empty JSON collection (one or more items).
+
+#### Prototype
+```JavaScript
+utils.expect.response.not.empty(pm)
+```
+
+#### Example
+Check if the HTTP response data contains a JSON collection with at least one item.
+```JavaScript
+utils.expect.response.not.empty(pm);
+```
+
 ## Property validation functions
 Property validation functions check named properties of the specified objects. The primary benefits of these functions (compared to the underlying [Chai assertions](https://www.chaijs.com/api/bdd/) they use) is that they (a) always check to make sure that the properties exist before additional validation (so you can skip one test step) and (b) generate more complete error messages on assertion failures (the default assertion errors do not mention named of the properties being checked, which makes them not that useful). Property validation functions are grouped under the `utils.expect.property` namespace and include:
 
 * [`utils.expect.property.exist`](#utilsexpectpropertyexist):
 Expects the specified object to have a property with the given name.
-* [`utils.expect.property.notexist`](#utilsexpectpropertynotexist):
-Expects the specified object to not have a property with the given name.
 * [`utils.expect.property.equal`](#utilsexpectpropertyequal):
 Expects a named property of the specified object to be equal to the specific value.
-* [`utils.expect.property.notequal`](#utilsexpectpropertynotequal):
+* [`utils.expect.property.not.exist`](#utilsexpectpropertynotexist):
+Expects the specified object to not have a property with the given name.
+* [`utils.expect.property.not.equal`](#utilsexpectpropertynotequal):
 Expects a named property of the specified object to not be equal to the specific value.
 
 ### Parameters
@@ -484,22 +484,6 @@ var response = pm.response.json();
 utils.expect.property.exist(pm, response, "id");
 ```
 
-### `utils.expect.property.notexist`
-Expects the specified object to not have a property with the given name.
-
-#### Prototype
-```JavaScript
-utils.expect.property.notexist(pm, data, name)
-```
-
-#### Example
-Check if the JSON object returned in the HTTP response does not contain a property `id`.
-
-```JavaScript
-var response = pm.response.json();
-utils.expect.property.notexist(pm, response, "id");
-```
-
 ### `utils.expect.property.equal`
 Expects a named property of the specified object to be equal to the specific value (can be any simple data type, such as boolean, integer, etc.).
 
@@ -520,7 +504,23 @@ var response = pm.response.json();
 utils.expect.property.equal(pm, response, "active", true);
 ```
 
-### `utils.expect.property.notequal`
+### `utils.expect.property.not.exist`
+Expects the specified object to not have a property with the given name.
+
+#### Prototype
+```JavaScript
+utils.expect.property.not.exist(pm, data, name)
+```
+
+#### Example
+Check if the JSON object returned in the HTTP response does not contain a property `id`.
+
+```JavaScript
+var response = pm.response.json();
+utils.expect.property.not.exist(pm, response, "id");
+```
+
+### `utils.expect.property.not.equal`
 Expects a named property of the specified object to not be equal to the specific value (can be any simple data type, such as boolean, integer, etc.).
 
 #### Parameters
@@ -532,7 +532,7 @@ Check if the JSON object returned in the HTTP response contains a property `acti
 
 ```JavaScript
 var response = pm.response.json();
-utils.expect.property.notequal(pm, response, "active", true);
+utils.expect.property.not.equal(pm, response, "active", true);
 ```
 
 ## String validation functions
@@ -548,6 +548,8 @@ Expects the named object property to start with the specified string value.
 Expects the named object property to end with the specified string value.
 * [`utils.expect.property.string.match`](#utilsexpectpropertystringmatch):
 Expects the named object property to match the specified regular expression.
+* [`utils.expect.property.string.not.match`](#utilsexpectpropertystringnotmatch):
+Expects the named object property to not match the specified regular expression.
 
 ### Parameters
 
@@ -648,6 +650,22 @@ Check if the JSON object returned in the HTTP response contains the string prope
 ```JavaScript
 var response = pm.response.json();
 utils.expect.property.string.match(pm, response, "name", /^John$/);
+```
+
+### `utils.expect.property.string.not.match`
+Expects the named object property to not match the specified regular expression.
+
+#### Prototype
+```JavaScript
+utils.expect.property.string.not.match(pm, data, name, value)
+```
+
+#### Example
+Check if the JSON object returned in the HTTP response contains the string property `name` holding the value that doe not match a regular expression `/^John$/`.
+
+```JavaScript
+var response = pm.response.json();
+utils.expect.property.string.not.match(pm, response, "name", /^John$/);
 ```
 
 ## Trace functions

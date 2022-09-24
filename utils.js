@@ -101,7 +101,7 @@
 
 utils = {
     // Version of this library.
-    version: "1.0.1",
+    version: "1.0.2",
 
     // Default name of the problem details object property returning
     // application specific error code.
@@ -609,17 +609,20 @@ utils = {
         },
 
         // DESCRITION
-        // Expects response to contain an non-empty array.
-        nonempty: function(pm) {
-            utils.expect.response.many(pm, 1, -1);
-        },
-
-        // DESCRITION
         // Expects response to contain an array holding a single item.
         unique: function(pm) {
             utils.expect.response.many(pm, 1, 1);
-        }
+        },
 
+        // DESCRIPTION
+        // Negative functions checking response.
+        not: {
+            // DESCRITION
+            // Expects response to contain an non-empty array.
+            empty: function(pm) {
+                utils.expect.response.many(pm, 1, -1);
+            }
+        }
     // End of 'utils.expect.response' functions.
     },
 
@@ -641,20 +644,6 @@ utils = {
         //  Property name.
         exist: function(pm, data, name) {
             pm.expect(data).to.have.property(name);
-        },
-
-        // DESCRIPTION
-        // Expects object to not have a named property holding any value
-        // including null.
-        //
-        // PARAMETERS
-        // - data (object)
-        //  Data object which property is being checked.
-        //
-        // - name (string)
-        //  Property name.
-        notexist: function(pm, data, name) {
-            pm.expect(data).to.not.have.property(name);
         },
 
         // DESCRIPTION
@@ -687,30 +676,48 @@ utils = {
         },
 
         // DESCRIPTION
-        // Expects object property to exist and equal the specified value.
-        //
-        // PARAMETERS
-        // - data
-        //  Same as in 'utils.expect.property.exist'.
-        //
-        // - name
-        //  Same as in 'utils.expect.property.exist'.
-        //
-        // - value (object)
-        //  Expected value (can be null).
-        notequal: function(pm, data, name, value) {
-            utils.expect.property.exist(pm, data, name);
+        // Negative property check functions.
+        not: {
+            // DESCRIPTION
+            // Expects object to not have a named property holding any value
+            // including null.
+            //
+            // PARAMETERS
+            // - data (object)
+            //  Data object which property is being checked.
+            //
+            // - name (string)
+            //  Property name.
+            exist: function(pm, data, name) {
+                pm.expect(data).to.not.have.property(name);
+            },
 
-            if (value !== undefined) {
-                if (value === null) {
-                    pm.expect(data[name]).to.not.be.null;
-                } else {
-                    var msg = "Expected '" + name +
-                        "' property to not equal '" + value +
-                        "' but got '" + data[name] +
-                        "'";
+            // DESCRIPTION
+            // Expects object property to exist and equal the specified value.
+            //
+            // PARAMETERS
+            // - data
+            //  Same as in 'utils.expect.property.exist'.
+            //
+            // - name
+            //  Same as in 'utils.expect.property.exist'.
+            //
+            // - value (object)
+            //  Expected value (can be null).
+            equal: function(pm, data, name, value) {
+                utils.expect.property.exist(pm, data, name);
 
-                    pm.expect(data[name]).to.not.equal(value, msg);
+                if (value !== undefined) {
+                    if (value === null) {
+                        pm.expect(data[name]).to.not.be.null;
+                    } else {
+                        var msg = "Expected '" + name +
+                            "' property to not equal '" + value +
+                            "' but got '" + data[name] +
+                            "'";
+
+                        pm.expect(data[name]).to.not.equal(value, msg);
+                    }
                 }
             }
         },
@@ -888,11 +895,45 @@ utils = {
                         pm.expect(data[name]).to.be.null;
                     } else {
                         var msg = "Expected '" + name +
-                            "' property to match regex '" + value +
+                            "' property to match regular expression '" + value +
                             "' but got '" + data[name] +
                             "'";
 
                         pm.expect(data[name]).to.match(value, msg);
+                    }
+                }
+            },
+
+            // DESCRIPTION
+            // Negative string property check functions.
+            not: {
+                // DESCRIPTION
+                // Expects the string object property to exist and
+                // not match the specified regular expression.
+                //
+                // PARAMETERS
+                // - data
+                //  Same as in 'utils.expect.property.exist'.
+                //
+                // - name
+                //  Same as in 'utils.expect.property.exist'.
+                //
+                // - value (regular expression)
+                //  Regular expression (can be null).
+                match: function(pm, data, name, value) {
+                    utils.expect.property.exist(pm, data, name);
+
+                    if (value !== undefined) {
+                        if (value === null) {
+                            pm.expect(data[name]).to.not.be.null;
+                        } else {
+                            var msg = "Expected '" + name +
+                                "' property to not match regular expression '" + value +
+                                "' but got '" + data[name] +
+                                "'";
+
+                            pm.expect(data[name]).to.not.match(value, msg);
+                        }
                     }
                 }
             }
