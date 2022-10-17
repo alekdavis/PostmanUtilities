@@ -101,7 +101,7 @@
 
 utils = {
     // Version of this library.
-    version: "1.0.2",
+    version: "1.0.3",
 
     // Default name of the problem details object property returning
     // application specific error code.
