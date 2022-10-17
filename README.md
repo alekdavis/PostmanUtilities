@@ -338,6 +338,8 @@ Expects HTTP response to return an empty JSON collection.
 Expects HTTP response to return a JSON collection with a single element.
 * [`utils.expect.response.not.empty`](#utilsexpectresponsenotempty):
 Expects HTTP response to return a non-empty JSON collection.
+* [`utils.expect.response.not.unique`](#utilsexpectresponsenotunique):
+Expects HTTP response to return a JSON collection with two or more items.
 
 ### `utils.expect.response.text`
 Expects HTTP response to return a simple (not the JSON) data type, such as string.
@@ -385,8 +387,9 @@ utils.expect.response.one(pm);
 Expects HTTP response to return a JSON collection (can be empty or contain the specified minimum and/or maximum number of items). The `utils.expect.response.many` function can be called via one of these shortcuts:
 
 * [`utils.expect.response.empty`](#utilsexpectresponseempty) to check for an empty collection
-* [`utils.expect.response.not.empty`](#utilsexpectresponsenotempty) to check for a non-empty collection
 * [`utils.expect.response.unique`](#utilsexpectresponseunique) to check for a collection with a single (unique) item
+* [`utils.expect.response.not.empty`](#utilsexpectresponsenotempty) to check for a non-empty collection
+* [`utils.expect.response.not.unique`](#utilsexpectresponsenotunique) to check for a collection with multiple items
 
 #### Prototype
 ```JavaScript
@@ -446,6 +449,20 @@ utils.expect.response.not.empty(pm)
 Check if the HTTP response data contains a JSON collection with at least one item.
 ```JavaScript
 utils.expect.response.not.empty(pm);
+```
+
+### `utils.expect.response.not.unique`
+Expects HTTP response to return a JSON collection with at least two items.
+
+#### Prototype
+```JavaScript
+utils.expect.response.not.unique(pm)
+```
+
+#### Example
+Check if the HTTP response data contains a JSON collection with at least two items.
+```JavaScript
+utils.expect.response.not.unique(pm);
 ```
 
 ## Property validation functions
