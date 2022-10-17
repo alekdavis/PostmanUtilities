@@ -622,6 +622,7 @@ utils = {
             empty: function(pm) {
                 utils.expect.response.many(pm, 1, -1);
             },
+
             // DESCRITION
             // Expects response to contain an array with at least two items.
             unique: function(pm) {
