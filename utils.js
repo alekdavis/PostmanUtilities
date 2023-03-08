@@ -1018,6 +1018,10 @@ utils = {
             traceLevel = utils.trace.defaultLevel;
         }
 
+        if (level === undefined || level === null || level === NaN) {
+            level = utils.trace.defaultLevel;
+        }
+	    
         if (traceLevel >= level) {
             console.log(message);
         }
